@@ -23,7 +23,7 @@ def getaccountname(request, accountno, code):
     #return JsonResponse(monnify_resp)
     response = paystack_resp.get('status')
     if response != True:
-        status = 0;
+        status = 0
         account_name = ''
     else:
         status = 1
