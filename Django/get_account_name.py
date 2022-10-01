@@ -19,14 +19,14 @@ def getaccountname(request, accountno, code):
     res = requests.get(url, headers=headers)
     res = res.json()
     res = json.dumps(res)
-    monnify_resp = json.loads(res)
+    paystack_resp = json.loads(res)
     #return JsonResponse(monnify_resp)
-    response = monnify_resp.get('status')
+    response = paystack_resp.get('status')
     if response != True:
         status = 0;
         account_name = ''
     else:
         status = 1
-        account_name = monnify_resp.get('data')['account_name'] #Gets account name
+        account_name = paystack_resp.get('data')['account_name'] #Gets account name
     response = {'msg': account_name, 'status': status}
     return JsonResponse(response)
